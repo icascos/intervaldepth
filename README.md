@@ -1,6 +1,7 @@
 # intervaldepth
 computes the (univariate) interval depth and the (bi- and trivariate) region depths 
 
+source("https://raw.githubusercontent.com/icascos/intervaldepth/master/interval_depth.R")
 
 # interval depth
 x.data=rnorm(1000)
