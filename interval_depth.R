@@ -131,38 +131,3 @@ zonoidreg <- function(data,nlines=1000){
   extreme.points <- rbind(extreme.points,extreme.points[1,])
   return(extreme.points)
 }
-
-
-
-
-
-
-# some examples
-
-x.data=rnorm(1000)
-mu=mean(x.data)
-desv=mean(abs(x.data-median(x.data)))
-m1m2depth(c(mu-desv,mu+desv),x.data)
-
-
-x1=rnorm(1000)
-x2=rnorm(1000)
-x.data=cbind(x1,x2)
-m1m2depthr2(x.data,x.data)
-
-######################################3
-
-x=seq(-3,3,by=.025)
-y=seq(-3,3,by=.025)
-dat=sort(rnorm(100))
-dep=matrix(nrow=length(x),ncol=length(y))
-for(i in 1:length(x)){
-  for(j in 1:length(y)){
-    dep[i,j]=m1m2depth(c(x[i],y[j]),dat,ord=TRUE)
-  }
-}
-
-
-plot(NULL,xlim=c(-3,3),ylim=c(-3,3))
-contour(x,y,dep,levels=(1:10)/10,add=TRUE)
-filled.contour(x,y,dep)
