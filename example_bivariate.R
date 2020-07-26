@@ -1,3 +1,5 @@
+source("https://raw.githubusercontent.com/icascos/intervaldepth/master/interval_depth.R")
+
 # several bivariate region depths w.r.t. a sample of 200 observations of a normal distribution
 
 set.seed(123)
