@@ -1,3 +1,5 @@
+source("https://raw.githubusercontent.com/icascos/intervaldepth/master/interval_depth.R")
+
 # several interval depths w.r.t. a sample of 100 standard normal observations
 
 par(mar=c(2.5,0,1,0))
