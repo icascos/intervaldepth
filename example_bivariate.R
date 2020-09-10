@@ -2,6 +2,7 @@ source("https://raw.githubusercontent.com/icascos/intervaldepth/master/interval_
 
 # several bivariate region depths w.r.t. a sample of 200 observations of a normal distribution
 
+require(MASS)
 set.seed(123)
 par(mfrow=c(2,2))
 gaussian <- mvrnorm(n=200,mu=c(0,0),Sigma=matrix(c(1,.6,.6,1),nrow=2))
