@@ -64,14 +64,6 @@ m1m2r2obj<- function(ang,samp,X) {
                    x=cos(ang)*X[,1]+sin(ang)*X[,2]))
 }
 
-m1m2r2objold<- function(ang,samp,X) {
-  x <- cos(ang)*X[,1]+sin(ang)*X[,2]
-  samp <- cos(ang)*samp[,1]+sin(ang)*samp[,2]
-  mu <- mean(samp)
-  desv <- mean(abs(samp-median(samp)))
-  m <- c(mu-desv,mu+desv)
-  return(m1m2depth(m,x))
-}
 
 # 2-dimensional region depth of zonoid region of level 1/2 of samp wrt X
 
@@ -91,14 +83,6 @@ m1m2r3obj <- function(ang,samp,X) {
                    x=sin(ang[1])*cos(ang[2])*X[,1]+sin(ang[1])*sin(ang[2])*X[,2]+cos(ang[1])*X[,3]))
 }
 
-m1m2r3objold <- function(ang,samp,X) {
-  x <- sin(ang[1])*cos(ang[2])*X[,1]+sin(ang[1])*sin(ang[2])*X[,2]+cos(ang[1])*X[,3]
-  samp <- sin(ang[1])*cos(ang[2])*samp[,1]+sin(ang[1])*sin(ang[2])*samp[,2]+cos(ang[1])*samp[,3]
-  mu <- mean(samp)
-  desv <- mean(abs(samp-median(samp)))
-  m <- c(mu-desv,mu+desv)
-  return(m1m2depth(m,x))
-}
 
 # 3-dimensional region depth of zonoid region of level 1/2 of samp wrt X
 
