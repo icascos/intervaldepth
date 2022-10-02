@@ -96,16 +96,24 @@ m1m2depthr3<-function(samp,X,nang=10) {
   return(depth)
 }
 
-# extreme points of the zonoid region of level 1/2 of the bivariate dataset data
+# extreme points of the zonoid region of level alpha of the bivariate dataset data
 
-zonoidreg <- function(data,nlines=1000){
+zonoidreg <- function(data,alpha=0.5,nlines=1000){
   n <- nrow(data)
   angle <- seq(0,2*pi,length.out=nlines) 
   extreme.points <- NULL
-  zon1 <- mean(sort(data[,1]*cos(angle[1])+data[,2]*sin(angle[1]))[(n/2+1):n])
+  dordered <- sort(data[,1]*cos(angle[1])+data[,2]*sin(angle[1]),decreasing=TRUE)
+  lu <- floor(n*alpha)
+  prom <- 0
+  if(lu>=1) {prom <- mean(dordered[1:lu])}
+  zon1 <- (lu*prom+(n*alpha-lu)*dordered[lu+1])/(n*alpha)
   
   for(i in 2:nlines){
-    zon2 <-  mean(sort(data[,1]*cos(angle[i])+data[,2]*sin(angle[i]))[(n/2+1):n])
+    dordered <- sort(data[,1]*cos(angle[i])+data[,2]*sin(angle[i]),decreasing=TRUE)
+    lu <- floor(n*alpha)
+    prom <- 0
+    if(lu>=1) {prom <- mean(dordered[1:lu])}
+    zon2 <- (lu*prom+(n*alpha-lu)*dordered[lu+1])/(n*alpha)
     extreme.points <- rbind(extreme.points,solve(matrix(c(cos(angle[i-1]),sin(angle[i-1]),
                                                           cos(angle[i]),sin(angle[i])),byrow=TRUE,ncol=2),
                                                  c(zon1,zon2)))
